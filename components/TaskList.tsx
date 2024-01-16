@@ -19,7 +19,7 @@ export default async function TaskList() {
           <li
             key={task.id}
             className="flex justify-between items-center px-6 py-4 mt-4
-            border border-base-300 rounded-xl shadow-lg"
+            border border-base-300 bg-white rounded-xl shadow-lg"
           >
             <h2
               className={`text-lg capitalize ${

@@ -2,6 +2,7 @@
 
 - This is a basic example of a simple NextTS application
 - It's supposed to test all the features of NextTS
+- You can access the online version of the app [here](https://awesome-app-five.vercel.app)
 - Have fun!
 
 ## Getting Started
