@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hello there!
+
+- This is a basic example of a simple NextTS application
+- It's supposed to test all the features of NextTS
+- Have fun!
 
 ## Getting Started
 
