@@ -4,7 +4,7 @@ import React from "react"
 
 const links = [
   { href: "/tasks", label: "tasks" },
-  { href: "/query", label: "query" },
+  { href: "/prisma-example", label: "prisma" },
   { href: "/client", label: "client" },
   { href: "/drinks", label: "drinks" },
 ]

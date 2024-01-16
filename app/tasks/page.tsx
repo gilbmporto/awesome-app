@@ -1,5 +1,12 @@
-import React from "react";
+import TaskformCustom from "@/components/TaskFormCustom"
+import TaskList from "@/components/TaskList"
+import React from "react"
 
 export default function TasksPage() {
-  return <div>TasksPage</div>;
+  return (
+    <div className="max-w-xl">
+      <TaskformCustom />
+      <TaskList />
+    </div>
+  )
 }
