@@ -1,13 +1,22 @@
 "use client"
 import React from "react"
+import { useFormStatus } from "react-dom"
+import toast from "react-hot-toast"
 
 const ClientDeleteButton = () => {
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const { pending } = useFormStatus()
+
+  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     const isConfirmed = window.confirm(
       "Are you sure you want to delete this task?"
     )
     if (!isConfirmed) {
-      event.preventDefault() // Prevent form submission if not confirmed
+      toast.error("Cancelled")
+      event.preventDefault()
+    }
+    if (isConfirmed) {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+      toast.success("Task deleted")
     }
   }
 
@@ -16,8 +25,9 @@ const ClientDeleteButton = () => {
       type="submit"
       className="btn btn-sm btn-error"
       onClick={handleSubmit}
+      disabled={pending}
     >
-      Delete
+      {pending ? "Deleting..." : "Delete"}
     </button>
   )
 }
