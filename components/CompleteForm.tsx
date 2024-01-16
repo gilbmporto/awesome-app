@@ -1,5 +1,6 @@
 import { completeTask, getTask, uncompleteTask } from "@/utils/actions"
 import React from "react"
+import ClientCompleteButton from "./ClientCompleteButton"
 
 export default async function CompleteForm({ id }: { id: string }) {
   const task = await getTask(id)
@@ -9,9 +10,7 @@ export default async function CompleteForm({ id }: { id: string }) {
       return (
         <form action={uncompleteTask}>
           <input type="hidden" name="id" value={id} />
-          <button type="submit" className="btn btn-sm btn-secondary">
-            Uncomplete
-          </button>
+          <ClientCompleteButton completed={task.completed} />
         </form>
       )
     }
@@ -19,9 +18,7 @@ export default async function CompleteForm({ id }: { id: string }) {
     return (
       <form action={completeTask}>
         <input type="hidden" name="id" value={id} />
-        <button type="submit" className="btn btn-sm btn-success">
-          Complete
-        </button>
+        <ClientCompleteButton completed={task.completed} />
       </form>
     )
   }

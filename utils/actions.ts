@@ -41,6 +41,22 @@ export const createTask = async (formData: FormData) => {
   revalidatePath("/tasks")
 }
 
+// ==================================================
+
+// List of bad words to filter out
+const badWords = ["ass", "fuck"]
+
+// Custom validation function
+const noBadWords = (content: string) => {
+  const lowerCaseContent = content.toLowerCase()
+  for (const word of badWords) {
+    if (lowerCaseContent.includes(word)) {
+      throw new Error(`Content cannot include the word: ${word}`)
+    }
+  }
+  return content
+}
+
 export const createTaskCustom = async (
   prevState: StateProps,
   formData?: FormData
@@ -49,7 +65,9 @@ export const createTaskCustom = async (
   const content = formData?.get("content")
 
   const Task = z.object({
-    content: z.string().min(5),
+    content: z.string().min(5).refine(noBadWords, {
+      message: "Content contains prohibited words",
+    }),
   })
 
   try {
@@ -65,10 +83,11 @@ export const createTaskCustom = async (
       return { message: "Success!" }
     }
   } catch (error: any) {
-    console.log(error)
     return { message: `Error: ${error.message}` }
   }
 }
+
+// ==================================================
 
 export const updateTask = async (id: string, content: string) => {
   if (content) {

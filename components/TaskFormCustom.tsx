@@ -33,7 +33,7 @@ export default async function TaskformCustom() {
 
   useEffect(() => {
     if (state?.message?.includes("Error")) {
-      toast.error("There was an error adding your task")
+      toast.error(state.message)
       return
     } else if (state?.message?.includes("Success")) {
       toast.success(state?.message)
